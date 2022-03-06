@@ -1,1 +1,1 @@
-# replit_coding_test Repository
+# Algorithm Study Repository
