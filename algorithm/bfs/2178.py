@@ -2,48 +2,30 @@ from collections import deque
 
 
 N,M = map(int, input().split())
-arr = []
-count = 1
-#input with no space,, how?
+graph = []
 for i in range(N):
-    a = list(input())
-    arr.append(a)
+    graph.append(list(map(int,input())))
 
-for i in range(N):
-    for k in range(M):
-        if arr[i][k] == 1:
-            arr[i][k] = count
-        count +=1
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
 
-graph = [[]]
-visited = [False]*(count-1)
-for i in range(N):
-    for k in range(M):
-        if arr[i][k] != 0:
-            a = []
-            if arr[i-1][k] != 0 and i >0:
-                a.append(arr[i-1][k])
-            elif arr[i][k-1] != 0 and k >0:
-                a.append(arr[i][k-1])
-            elif arr[i][k+1] != 0 and k < M -1:
-                a.append(arr[i][k+1])
-            elif arr[i+1][k] != 0 and i < N-1:
-                a.append(arr[i+1][k])
-        graph.append(a)
-depth = 0
-def bfs(graph, start, visited):
-    queue = deque([start])
-    visited[start] = True
+def bfs(x,y):
+    queue = deque()
+    queue.append((x,y))
+
     while queue:
-        v = queue.popleft()
-        print(v, end='')
-        depth = depth + 1
-        for i in graph[v]:
-            if not visited[i]:
-                queue.append(i)
-                visited[i] = True
+        x,y = queue.popleft()
+        for i in range(4):
+            nx = x +dx[i]
+            ny = y +dy[i]
 
-bfs(graph,1,visited)
+            if nx < 0 or ny < 0 or nx >= N or ny >= M:
+                continue
+            if graph[nx][ny] == 0:
+                continue
+            if graph[nx][ny] == 1:
+                graph[nx][ny] = graph[x][y]+1
+                queue.append((nx,ny))
+    return graph[N-1][M-1]
 
-print(count)
-
+print(bfs(0,0))
