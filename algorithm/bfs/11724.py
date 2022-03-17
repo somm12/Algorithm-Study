@@ -15,10 +15,8 @@ def bfs(graph,start, visited):
     visited[start] = True
     for i in graph[start]:
         if not visited[i]:
-            visited[i] = True
-        for k in graph[i]:
-            if not visited[k]:
-                visited[k]= True
+            bfs(graph,i,visited)
+     
 
 visited = [False] * (N+1)
 visited[0] =True
