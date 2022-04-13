@@ -9,3 +9,4 @@ while True:
         print("yes")
     else:
         print("no")
+#baekjoon algorithm 1259.py
