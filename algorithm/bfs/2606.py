@@ -1,7 +1,7 @@
 from collections import deque
 n = int(input())
 pair_size = int(input())
-visited = [False] * n
+visited = [False] * (n+1)
 graph = [[] for i in range(n+1)]
 
 for i in range(pair_size):
