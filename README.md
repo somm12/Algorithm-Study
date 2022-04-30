@@ -1,1 +1,1 @@
-# Algorithm Study Repository
+# Algorithm Study Repository baekjoon algorithm/programmers
