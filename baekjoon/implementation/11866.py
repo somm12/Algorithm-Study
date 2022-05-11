@@ -1,6 +1,3 @@
-from queue import Empty
-
-
 answer = []
 index = 0
 
