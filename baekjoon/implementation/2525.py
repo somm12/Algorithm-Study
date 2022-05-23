@@ -10,4 +10,4 @@ if updateMinute >= 60:
         hour = hour - 24
 
 print(hour,end=' ')
-print(updateMinute)
+print(updateMinute,end='')
