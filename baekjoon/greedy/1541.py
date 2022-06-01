@@ -7,4 +7,4 @@ for i in arr[0].split('+'):
 for k in arr[1:]:
     for j in k.split('+'):
         answer -= int(j)
-print(answer)
+print(answer) 
