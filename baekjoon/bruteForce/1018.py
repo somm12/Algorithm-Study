@@ -1,5 +1,3 @@
-import copy
-
 def chessMake(x,y,bOrW):
     global arr
     count = 0
