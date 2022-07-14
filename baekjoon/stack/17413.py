@@ -25,3 +25,4 @@ for val in arr:
 while stack:
     ans += stack.pop()
 print(ans)
+# 최대 문자열개수가 10만이기 때문에 for 중복문은 되도록이면 피한다.
