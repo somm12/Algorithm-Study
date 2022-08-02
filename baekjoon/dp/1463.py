@@ -3,7 +3,6 @@ n = int(input())
 d = [0] * (n+1)
 d[1] = 0
 
-
 if n <= 1:
     print(d[n])
     exit(0)
