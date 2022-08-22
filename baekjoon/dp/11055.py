@@ -1,4 +1,5 @@
 n = int(input())
+
 arr = list(map(int, input().split()))
 dp = [0] * n
 dp[0] = arr[0]
@@ -9,7 +10,6 @@ for i in range(1, n):
                 big = dp[j]
         dp[i] += big + arr[i]
 print(max(dp))
-
 #다른 방법
 n = int(input())
 dp = [0] * 1001
