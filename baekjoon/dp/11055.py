@@ -10,7 +10,7 @@ for i in range(1, n):
                 big = dp[j]
         dp[i] += big + arr[i]
 print(max(dp))
-#다른 방법
+#다른 방법 - 1000까지의 배열을 만들어 해당 숫자 전까지의 리스트 중 최대값을 더하면 끝.
 n = int(input())
 dp = [0] * 1001
 a = list(map(int, input().split()))
