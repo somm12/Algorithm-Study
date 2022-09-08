@@ -9,6 +9,7 @@ def dfs(L):
 if __name__ == "__main__":
     n, m = map(int,input().split())
     arr = list(set(map(int,input().split())))
+    # 중복되는 수를 set으로 감싸서 제거 후, 다시 n을 대입.
     n = len(arr)
     ans = set()
     arr.sort()
