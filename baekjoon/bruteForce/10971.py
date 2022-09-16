@@ -1,31 +1,20 @@
-import sys
-
-
-def dfs(start, next, value, visited):
-    global min_value
-    if min_value < value:
-        return
-    if len(visited) == N:
-        if travel[next][start] != 0:
-            min_value = min(min_value, value + travel[next][start])
+def dfs(start, next, total, visited):
+    global minV
+    if total > minV:
         return
 
-    for i in range(N):
-        if travel[next][i] != 0 and i != start and i not in visited:
-            visited.append(i)
-            dfs(start, i, value + travel[next][i], visited)
-            visited.pop()
-
-
-if __name__ == "__main__":
-
-    N = int(input())
-    travel = [list(map(int, input().split())) for _ in range(N)]
-
-    min_value = sys.maxsize
-
-    # 각 번호에서 시작
-    for i in range(N):
-        dfs(i, i, 0, [i])
-
-    print(min_value)
+    if len(visited) == n:
+        if arr[next][start] != 0:
+            minV = min(minV, total + arr[next][start])
+    else:
+        for i in range(n):
+            if arr[next][i] != 0 and i not in visited:
+                visited.append(i)
+                dfs(start, i ,total + arr[next][i], visited)
+                visited.pop()
+n = int(input())
+arr = [list(map(int, input().split())) for _ in range(n)]
+minV = 10**7
+for i in range(n):
+    dfs(i,i,0,[i])       
+print(minV)
