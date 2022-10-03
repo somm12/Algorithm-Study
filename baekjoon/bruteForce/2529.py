@@ -10,7 +10,7 @@ maxV = -1
 def dfs(L, idx):
     global minV, maxV
     if L == k + 1:
-        temp = int(''.join(map(str, res))) # 출력시 만약 k+1 길이보다 작으면 앞에 0붙이기.
+        temp = int(''.join(map(str, res))) # 출력시 만약 k+1 길이보다 작으면 앞에 0붙이기
         minV = min(minV, temp)
         maxV = max(maxV, temp)
     else:
