@@ -33,4 +33,5 @@ for i in range(n):
             print(-1)
             exit()
         ans = max(ans, g[i][j])
+print(g)
 print(ans - 1)
