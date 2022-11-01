@@ -2,7 +2,7 @@ from collections import deque
 import sys
 # 재귀의 깊이를 지정.
 input = sys.stdin.readline
-# sys.setrecursionlimit(100000)
+sys.setrecursionlimit(100000)
 
 def dfs(start, now, cnt):
     global cycle
