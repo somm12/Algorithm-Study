@@ -1,28 +1,20 @@
 from collections import deque
-
-
 n = int(input())
-
-def bfs():
-    screen = deque([1])
-    board = deque([0])
-    count = deque([0])
-    while True:
-        s = screen.popleft()
-        b = board.popleft()
-        c = count.popleft()
-        if s == n:
-            print(c)
-            exit()
-        screen.append(s)
-        board.append(s)
-        count.append(c + 1)
-
-        screen.append(s + b)
-        board.append(b)
-        count.append(c + 1)
-
-        screen.append(s-1)
-        board.append(b)
-        count.append(c + 1)
-bfs()
+dist = [[-1]* (n+1) for _ in range(n+1)]
+q = deque()
+q.append((1,0))  # 화면 이모티콘 개수, 클립보드 이모티콘 개수
+dist[1][0] = 0
+while q:
+    s,c = q.popleft()
+    if s == n:
+        print(dist[s][c])
+        break
+    if dist[s][s] == -1: # 방문하지 않았으면
+        dist[s][s] = dist[s][c] + 1
+        q.append((s,s))
+    if s+c <= n and dist[s+c][c] == -1:
+        dist[s+c][c] = dist[s][c] + 1
+        q.append((s+c, c))
+    if s-1 >= 0 and dist[s-1][c] == -1:
+        dist[s-1][c] = dist[s][c] + 1
+        q.append((s-1, c))
