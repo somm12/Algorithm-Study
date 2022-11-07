@@ -1,62 +1,41 @@
-from glob import glob
-
+import sys
+from itertools import permutations
 
 n = int(input())
 num = list(map(int, input().split()))
 a = list(map(int, input().split()))
-nonum = []
+ops = []
 minV = 10 ** 9
 maxV  = -(10 ** 9)
 ch = [0] * (n - 1)
 order = []
 
+minV = sys.maxsize
+maxV = -1 * sys.maxsize
+
 for i in range(4):
-    if i == 0:
-        for i in range(a[i]):
-            nonum.append('+')
-    elif i == 1:
-        for i in range(a[i]):
-            nonum.append('-')
-    elif i == 2:
-        for i in range(a[i]):
-            nonum.append('x')
-    else:
-        for i in range(a[i]):
-            nonum.append('/')
-def sol():
-    ans = num[0]
-    for i in range(n - 1):
-        if order[i] == '+':
-            ans = ans + num[i + 1]
-        elif order[i] == '-':
-            ans = ans - num[i + 1]
-        elif order[i] == 'x':
-            ans = ans * num[i + 1]
-        elif order[i] == '/':
-            if ans < 0:
-                ans = ans * -1
-                ans = ans // num[i + 1]
-                ans = ans * -1
+    for k in range(a[i]):
+        ops.append(i)
+# ops에는 연산자 개수만큼 해당 인덱스가 들어감. 0 2 1 0 => ops: 1 1 2.
+
+for com in set(permutations(ops, n-1)):
+    answer = num[0]
+    for i in range(len(com)):
+        if com[i] == 0:
+            answer += num[i+1]
+        elif com[i] == 1:
+            answer -= num[i+1]
+        elif com[i] == 2:
+            answer *= num[i+1]
+        else:
+            # 부호가 음수면.
+            if answer < 0:
+                answer = -1 * (abs(answer) // abs(num[i+1]))
             else:
-                ans = ans // num[i + 1]
-    return ans
+                answer = answer//num[i+1]
 
-def dfs(L):
-    global minV, maxV
-    if L == n - 1:
-        v = sol()
-        minV = min(minV, v)
-        maxV = max(maxV, v)
-        return
-    else:
-        for i in range(n - 1):
-            if ch[i] == 0:
-                order.append(nonum[i])
-                ch[i] = 1
-                dfs(L + 1)
-                ch[i] = 0
-                order.pop()
+    minV = min(minV, answer)
+    maxV = max(maxV, answer)
 
-dfs(0)
 print(maxV)
 print(minV)
