@@ -21,3 +21,4 @@ def sol(x):
 sol(0)
 print(maxV)
 # 누적해서 더하는 것이 있다면, 매개변수를 이용한다.
+# pop, insert를 이용해 특정 index 의 값을 빼고 삽입가능하다.
