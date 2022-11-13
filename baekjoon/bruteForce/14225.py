@@ -8,7 +8,4 @@ for i in range(1, n + 1):
     for v in list(combinations(arr, i)):
         visited[sum(v)] = 1
 
-for i in range(1, len(visited)):
-    if visited[i] == 0:
-        print(i)
-        break
+print(visited[1:].index(0) + 1)
